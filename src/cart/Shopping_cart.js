@@ -2,8 +2,12 @@ import { useContext, useEffect, useState } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import Mywebcontextcall from '../mywebcontext/Mywebcontext';
+import { Link, useNavigate } from 'react-router-dom';
 
-export default function Cardsildar({ open, setOpen }) {
+export default function Shopping_cart({ open, setOpen }) {
+
+  const navigate = useNavigate();
+
   const { cartbox, setCartbox } = useContext(Mywebcontextcall);
 
 
@@ -12,6 +16,11 @@ export default function Cardsildar({ open, setOpen }) {
     setCartbox(updatedCart);
     localStorage.setItem('cartbox', JSON.stringify(updatedCart));
   };
+
+  const handleclick = () => {
+    navigate('/checkout')
+    setOpen(false)
+  }
 
   const handleQuantityChange = (productId, change) => {
     const updatedCart = cartbox.map(item => {
@@ -64,7 +73,7 @@ export default function Cardsildar({ open, setOpen }) {
                               <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                 <img
                                   src={product.imageSrc}
-                                  alt={product.name} // Adding alt text for better accessibility
+                                  alt={product.name}
                                   className="h-full w-full object-cover object-center"
                                 />
                               </div>
@@ -74,10 +83,18 @@ export default function Cardsildar({ open, setOpen }) {
                                     <h3>
                                       <a href="/">{product.name}</a>
                                     </h3>
-                                    <p className="ml-4">${(product.price * (product.quantity || 1)).toFixed(2)}</p>
+                                    <p className="ml-4">${product.price}</p>
                                   </div>
+                                  
                                   <p className="mt-1 text-sm text-gray-500">{product.description}</p>
+                                <div className='flex'> 
+                                  <div >
+                                  Total
+                                <span className='mx-2'>{product?.quantity * product?.price}</span>
+                                  </div>
                                 </div>
+                                </div>
+
                                 <div className="flex flex-1 items-end justify-between text-sm">
                                   <div className="flex items-center">
                                     <button
@@ -117,12 +134,13 @@ export default function Cardsildar({ open, setOpen }) {
                     </div>
                     <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                     <div className="mt-6">
-                      <a
-                        href="#"
+
+                      <Link onClick={handleclick}
+                        to="checkout"
                         className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                       >
                         Checkout
-                      </a>
+                      </Link>
                     </div>
                     <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                       <p>

@@ -3,8 +3,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Star } from '../assets/icon/Star';
 import Slider from 'react-slick';
-import Cardsildar from './Home/Cardsildar';
-import Mywebcontextcall from './mywebcontext/Mywebcontext';
+import Mywebcontextcall from '../mywebcontext/Mywebcontext';
+import Shopping_cart from '../cart/Shopping_cart';
 
 const Product = ({ id, name, description, price, imageSrc, review, handleAddCart }) => {
   return (
@@ -20,7 +20,7 @@ const Product = ({ id, name, description, price, imageSrc, review, handleAddCart
       </div>
       <div className="flex items-center justify-between mt-3">
         <p className="text-lg font-bold">
-          <span className="text-xl text-[#FF6868]">$</span> {price}
+          <span className="text-xl text-[#FF6868]">$</span>{price}
         </p>
         <div className="flex items-center">
           <Star />
@@ -82,8 +82,8 @@ const Slides = ({ handleAddCart }) => {
 const Sliderbox = () => {
   const { cartbox, setCartbox } = useContext(Mywebcontextcall);
 
-  
-  
+
+
   const [open, setOpen] = useState(false);
 
   const handleAddCart = (item) => {
@@ -120,7 +120,7 @@ const Sliderbox = () => {
           <Slides key={data} handleAddCart={handleAddCart} />
         ))}
       </Slider>
-      <Cardsildar open={open} setOpen={setOpen} cartbox={cartbox} setCartbox={setCartbox} />
+      <Shopping_cart open={open} setOpen={setOpen} cartbox={cartbox} setCartbox={setCartbox} />
 
     </div>
 
