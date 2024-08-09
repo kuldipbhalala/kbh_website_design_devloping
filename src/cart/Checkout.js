@@ -76,7 +76,6 @@ function Checkout() {
                 ))
               }
 
-
               <div className="bg-gray-50 rounded-xl p-6 w-full mb-8 max-lg:max-w-xl max-lg:mx-auto">
 
                 <div className="flex items-center justify-between w-full py-6">

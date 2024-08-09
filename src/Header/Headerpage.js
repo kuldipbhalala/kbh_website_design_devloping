@@ -13,7 +13,7 @@ const Headerpage = () => {
 
   const navigate = useNavigate();
 
-  const { cartbox } = useContext(Mywebcontextcall);
+  const { cartbox, formData, setFormData } = useContext(Mywebcontextcall);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 
@@ -67,7 +67,15 @@ const Headerpage = () => {
                 </div>
 
                 <button onClick={handleIconclick} className='rounded-[40px] flex justify-center mx-[14px] items-center self-center'>
-                  <FaUserCircle size={25} />
+                  
+                  {/* {
+                    formData ? (
+                      <img src={formData.Image} alt=""   className="w-10 h-10 rounded-full cursor-pointer object-cover" />
+                    ): */}
+                    
+                    <FaUserCircle size={25}  className="w-[24px] h-[24px] cursor-pointer object-contain" />
+                    {/* } */}
+
                 </button>
 
 
