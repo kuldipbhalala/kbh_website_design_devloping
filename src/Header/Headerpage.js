@@ -1,14 +1,17 @@
 import React, { useContext, useState } from 'react'
 import Logo from '../assets/icon/Logo'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Search from '../assets/Search';
 import Shopping from '../assets/icon/Shopping';
 import Call_Icon from '../assets/icon/Call_Icon';
 import { LuMenu } from "react-icons/lu";
 import Mywebcontextcall from '../mywebcontext/Mywebcontext';
 import Shopping_cart from '../cart/Shopping_cart';
+import { FaUserCircle } from "react-icons/fa";
 
 const Headerpage = () => {
+
+  const navigate = useNavigate();
 
   const { cartbox } = useContext(Mywebcontextcall);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,6 +27,11 @@ const Headerpage = () => {
     setOpen(true)
   }
 
+  const handleIconclick = () => {
+    navigate('/profile')
+  }
+
+
   return (
     <>
 
@@ -37,7 +45,7 @@ const Headerpage = () => {
             </div>
             <div className='hidden lg:block'>
               <ul className='flex'>
-                <li><Link to='/' className='text-[20px] font-medium text-[#39DB4A]'>Home</Link></li>
+                <li><Link to='/' className='text-[20px] text-[#39DB4A] font-medium '>Home</Link></li>
                 <li><Link to='/' className='text-[20px] font-medium ml-[60px] hover:text-[#39DB4A]'>Menu</Link></li>
                 <li><Link to='/' className='text-[20px] font-medium ml-[60px] hover:text-[#39DB4A]'>Services</Link></li>
                 <li><Link to='/' className='text-[20px] font-medium ml-[60px] hover:text-[#39DB4A]'>Offers</Link></li>
@@ -53,15 +61,23 @@ const Headerpage = () => {
                   <div className='shopping mr-[34px] cursor-pointer a' onClick={handleCartValue}>
                     <Shopping />
                   </div>
-                  <div className="w-6 h-6 bg-[#39DB4A] cursor-pointer flex justify-center items-center text-white rounded-full absolute top-0 right-0" >
+                  <div className="w-6 h-6 bg-[#39DB4A] cursor-pointer flex justify-center items-center text-white rounded-full absolute bottom-[35%] right-[36%]" >
                     {cartbox?.length || 0}
                   </div>
                 </div>
+
+                <button onClick={handleIconclick} className='rounded-[40px] flex justify-center mx-[14px] items-center self-center'>
+                  <FaUserCircle size={25} />
+                </button>
+
 
                 <button className='bg-[#39DB4A] rounded-[40px] flex justify-center mx-[14px] items-center self-center'>
                   <span className='w-[23.96px] my-[18px] ml-[32px]'><Call_Icon /></span>
                   <span className='text-white text-[20px] cursor-pointer py-[15px] mr-[27px] mx-[14px]'>Contact</span>
                 </button>
+
+
+
               </div>
               <div className='lg:hidden ml-2 mx-6 cursor-pointer' onClick={toggleMenu}>
                 <LuMenu className="w-8 h-8" />

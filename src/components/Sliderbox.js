@@ -106,6 +106,7 @@ const Sliderbox = () => {
       return updatedCart;
     });
   };
+
   const settings = {
     dots: true,
     infinite: true,

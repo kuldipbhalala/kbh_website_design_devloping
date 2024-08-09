@@ -48,7 +48,7 @@ const Home = () => {
 
 
                 <div className="flex flex-col  mx-5 lg:mx-0 md:flex-row items-center space-y-4 lg:space-y-0 lg:space-x-4">
-                  <button className="bg-[#39DB4A] rounded-full shadow-lg text-white text-lg lg:text-xl py-3 px-6">
+                  <button className="bg-[#39DB4A] rounded-full shadow-lg text-white text-lg lg:text-xl py-3 px-6 boxShadow-custom-green">
                     Order Now
                   </button>
                   <div className="flex items-center space-x-4">
